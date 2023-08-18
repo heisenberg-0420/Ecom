@@ -1,0 +1,65 @@
+{% extends 'store/main.html' %}
+{% load static %}
+{% block content %}
+  <div class="categories" id="myCategories">
+    {% for category in categories %}
+    <button class="category_button" data-category={{category}}>{{category}}</button>
+    {% endfor %}
+    <button class="icon" onclick="myFunction()">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+  <hr>
+  <div class="row" id="products">
+    {% for product in products %}
+      <div class="col-lg-4 {{product.category}} product_card">
+        <img class="thumbnail" src="{{ product.image_url }}" alt="{{product.name}} image">
+        <div class="box-element product">
+          <h6><strong>{{ product.name }}</strong></h6>
+          <hr>
+          <button data-product={{ product.id }} data-action="add" class="btn btn-outline-secondary add-btn update-cart">Add to Cart</button>
+          <h4 style="display: inline-block; float: right;">${{ product.price }}</h4>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <script type="text/javascript">
+    function myFunction() {
+      var x = document.getElementById("myCategories");
+      if (x.className === "categories") {
+        x.className += " responsive";
+      } else {
+        x.className = "categories";
+      }
+    }
+
+    document.querySelectorAll('.category_button').forEach(button => {
+      button.onclick = function() {
+        document.querySelectorAll(".category_button").forEach(button => {
+          button.style.borderBottom = "none";
+        })
+        this.style.borderBottom = "2px solid rgb(233, 196, 95)"
+        var parent_div = document.getElementById("myCategories");
+        if(parent_div.className !== "categories"){
+          parent_div.className = "categories";
+          parent_div.insertBefore(this, parent_div.firstChild);
+        }
+
+        if (this.dataset.category === "All"){
+          document.querySelectorAll(".product_card").forEach(product => {
+            product.style.display = "block";
+          })
+        }else{
+          document.querySelectorAll(".product_card").forEach(product => {
+            if(product.className.includes(this.dataset.category)){
+              product.style.display = "block";
+            }else{
+              product.style.display = "none";
+            }
+          })
+        }
+      }
+    })
+  </script>
+{% endblock content %}
