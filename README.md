@@ -16,4 +16,5 @@ This is for the admin panel
 &nbsp; username: heisenberg  
 &nbsp; password: heisenberg
 
-###[GitHub](https://github.com/heisenberg-0420/Ecom "Repository Link")
+
+[GitHub](https://github.com/heisenberg-0420/Ecom "Repository Link")
