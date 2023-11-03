@@ -12,6 +12,6 @@ Start the project by running following command in terminal:
 Note: You should be in the root directory of the project to start the server or project  
 
 ### Superuser
-This is for the admin panel
-&nbsp; username: heisenberg
+This is for the admin panel  
+&nbsp; username: heisenberg  
 &nbsp; password: heisenberg
